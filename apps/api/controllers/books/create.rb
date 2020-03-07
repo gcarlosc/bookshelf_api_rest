@@ -10,16 +10,12 @@ module Api
           validate_result = Form::BooksValidator.new(params).validate
           raise StandardError unless validate_result.success?
 
-          book = BooksInteractor.new.create(attribute)
-          self.body = response_body(book)
+          interactor_result = BooksInteractor::AddBook.new(params).call
+          self.body = JSON.dump(interactor_result.book.to_hash)
           self.status = 201
-        rescue => exception
+        rescue => e
           self.status = 400
-          @error = exception
-        end
-
-        def response_body(book)
-          JSON.dump(book.to_hash)
+          self.body = JSON.dump(interactor_result.messages)
         end
       end
     end

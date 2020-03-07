@@ -3,87 +3,14 @@ require 'hanami/helpers'
 module Api
   class Application < Hanami::Application
     configure do
-      ##
-      # BASIC
-      #
 
-      # Define the root path of this application.
-      # All paths specified in this configuration are relative to path below.
-      #
       root __dir__
 
-      # Relative load paths where this application will recursively load the
-      # code.
-      #
-      # When you add new directories, remember to add them here.
-      #
       load_paths << [
         'controllers'
       ]
 
-      # Handle exceptions with HTTP statuses (true) or don't catch them (false).
-      # Defaults to true.
-      # See: http://www.rubydoc.info/gems/hanami-controller/#Exceptions_management
-      #
-      # handle_exceptions true
-
-      ##
-      # HTTP
-      #
-
-      # Routes definitions for this application
-      # See: http://www.rubydoc.info/gems/hanami-router#Usage
-      #
       routes 'config/routes'
-
-      # URI scheme used by the routing system to generate absolute URLs
-      # Defaults to "http"
-      #
-      # scheme 'https'
-
-      # URI host used by the routing system to generate absolute URLs
-      # Defaults to "localhost"
-      #
-      # host 'example.org'
-
-      # URI port used by the routing system to generate absolute URLs
-      # Argument: An object coercible to integer, defaults to 80 if the scheme
-      # is http and 443 if it's https
-      #
-      # This should only be configured if app listens to non-standard ports
-      #
-      # port 443
-
-      # Enable cookies
-      # Argument: boolean to toggle the feature
-      #           A Hash with options
-      #
-      # Options:
-      #   :domain   - The domain (String - nil by default, not required)
-      #   :path     - Restrict cookies to a relative URI
-      #               (String - nil by default)
-      #   :max_age  - Cookies expiration expressed in seconds
-      #               (Integer - nil by default)
-      #   :secure   - Restrict cookies to secure connections
-      #               (Boolean - Automatically true when using HTTPS)
-      #               See #scheme and #ssl?
-      #   :httponly - Prevent JavaScript access (Boolean - true by default)
-      #
-      # cookies true
-      # or
-      # cookies max_age: 300
-
-      # Enable sessions
-      # Argument: Symbol the Rack session adapter
-      #           A Hash with options
-      #
-      # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
-      #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
-
-      # Configure Rack middleware for this application
-      #
-      # middleware.use Rack::Protection
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
@@ -94,54 +21,6 @@ module Api
       # Argument: A symbol representation of a mime type, defaults to :html
       #
       default_response_format :json
-      ##
-      # TEMPLATES
-      #
-
-      # The layout to be used by all views
-      #
-      layout :application # It will load Web::Views::ApplicationLayout
-
-      # The relative path to templates
-      #
-
-      ##
-      # ASSETS
-      #
-      assets do
-        # JavaScript compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :uglifier
-        #   * :yui
-        #   * :closure
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip JavaScript compression comment the following line
-        javascript_compressor :builtin
-
-        # Stylesheet compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :yui
-        #   * :sass
-        #
-        # See: https://guides.hanamirb.org/assets/compressors
-        #
-        # In order to skip stylesheet compression comment the following line
-        stylesheet_compressor :builtin
-
-        # Specify sources for assets
-        #
-        sources << [
-          'assets'
-        ]
-      end
 
       ##
       # SECURITY
@@ -244,15 +123,6 @@ module Api
       controller.prepare do
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
-      end
-
-      # Configure the code that will yield each time Web::View is included
-      # This is useful for sharing common functionality
-      #
-      # See: http://www.rubydoc.info/gems/hanami-view#Configuration
-      view.prepare do
-        include Hanami::Helpers
-        include Web::Assets::Helpers
       end
     end
 

@@ -6,8 +6,8 @@ module Form
 
     validations do
       required(:books).schema do
-        required(:title) { filled? }
-        required(:author) { filled? }
+        required(:title) { filled? & str? }
+        required(:author) { filled? & str? }
       end
     end
   end

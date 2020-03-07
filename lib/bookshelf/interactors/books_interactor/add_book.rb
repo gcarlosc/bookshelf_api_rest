@@ -1,18 +1,21 @@
 require 'hanami/interactor'
 
 module BooksInteractor
-  class Create
+  class AddBook
     include Hanami::Interactor
+    expose :book
 
     def initialize(params)
       @attributes = {
         title: params[:books][:title],
         author: params[:books][:author]
       }
+      @book = nil
+      @errors = []
     end
 
     def call
-      BookRepository.new.create(@attributes)
+      @book = BookRepository.new.create(@attributes)
     end
   end
 end
