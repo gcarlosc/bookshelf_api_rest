@@ -11,6 +11,7 @@ group :development do
   # See: https://guides.hanamirb.org/projects/code-reloading
   gem 'shotgun', platforms: :ruby
   gem 'hanami-webconsole'
+  gem "pry", "~> 0.12.2"
 end
 
 group :test, :development do
@@ -23,5 +24,8 @@ group :test do
 end
 
 group :production do
-  # gem 'puma'
 end
+
+gem 'puma'
+
+
