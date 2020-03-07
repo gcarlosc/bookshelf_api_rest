@@ -1,9 +1,9 @@
-# Bookshelf
+# Bookshelf Rest API
 
-Apps:
-Web -> index and create book
-Api -> index and create book
+1. Apps:
+..* Web -> index and create books
+..* API -> index and create books
 
-Adding:
-hanami/validations
-hanami/interactor
+2. Using:
+..* hanami/validations
+..* hanami/interactor
