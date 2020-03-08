@@ -3,19 +3,15 @@ module Api
     module Books
       class Index
         include Api::Action
-        accept :json
+        expose :books
 
-        def call(params)
-          books = BookRepository.new.all
-          self.body = response_body(books)
-          self.status = 201
-        rescue => e
-          self.status = 400
-          @error = e
+        def initialize
+          @interactor = BooksInteractor::ListBooks.new
         end
 
-        def response_body(books)
-          JSON.dump(books.map{|book| book.to_h})
+        def call(params)
+          result = @interactor.call
+          @books = result.books
         end
       end
     end

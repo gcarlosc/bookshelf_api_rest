@@ -7,7 +7,8 @@ module Api
       root __dir__
 
       load_paths << [
-        'controllers'
+        'controllers',
+        'views'
       ]
 
       routes 'config/routes'
