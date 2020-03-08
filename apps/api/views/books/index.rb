@@ -6,7 +6,7 @@ module Api
         include Api::View
 
         def render
-          JSON.dump(
+          _raw JSON.dump(
             books: books.map do |book|
               {
                 id: book.id,

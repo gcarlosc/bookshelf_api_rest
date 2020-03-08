@@ -1,4 +1,4 @@
-RSpec.describe Api::Controllers::Books::Index, type: :action do
+RSpec.describe Api::Controllers::Users::SignUp, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[] }
 

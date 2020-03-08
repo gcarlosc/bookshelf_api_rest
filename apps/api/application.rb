@@ -8,7 +8,8 @@ module Api
 
       load_paths << [
         'controllers',
-        'views'
+        'views',
+        'serializers'
       ]
 
       routes 'config/routes'

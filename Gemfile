@@ -29,3 +29,5 @@ end
 gem 'puma'
 
 
+
+gem "bcrypt", "~> 3.1"
